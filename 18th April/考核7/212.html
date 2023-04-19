@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <input type="text" id="user" placeholder="emali address">
+        <br>
+        <input type="password" id="password" placeholder="password">
+        <br>
+        <button>Log in</button>
+        <p id="info"></p>
+    </form>
+    <script>
+        // 请实现一个用户名输入框和登录按钮。登录后页面展示用户名称，并且关掉浏览器下次进来时依然可以显示。
+        var btn=document.querySelector('button');
+        var info=document.getElementById('info');
+        if(localStorage.getItem('username')){
+           var info= localStorage.getItem('username');
+        }else{
+            var user=document.getElementById('user');
+            btn.onclick=function(){
+                localStorage.setItem('username',user.value);
+                info.innerHTML=user.value;
+            }
+        }
+    </script>
+</body>
+</html>

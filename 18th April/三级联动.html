@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select name="province" id="province">
+        <option value="">请选择</option>
+    </select>
+    <span>省</span>
+    <select name="city" id="city">
+        <option value="">请选择</option>
+    </select>
+    <span>市</span>
+    <select name="district" id="district">
+        <option value="">请选择</option>
+    </select>
+    <span>区</span>
+    <script>
+        //定义数据
+        var dataProvince=['吉林省','辽宁省','黑龙江省'];
+        var dataCity=[
+            ['吉林市','长春市','四平市'],
+            ['大连市','盘锦市','沈阳市'],
+            ['黑河市','哈尔滨市']
+        ];
+        var dataDistrict=[
+            [
+                ['吉林1区','吉林2区','吉林3区','吉林4区'],
+                ['长春1区','长春2区','长春3区'],
+                ['四平1区','四平2区']
+            ],
+            [
+                ['大连1区','大连2区','大连3区','大连4区','大连5区'],
+                ['盘锦1区','盘锦2区','盘锦3区'],
+                ['沈阳1区','沈阳2区','沈阳3区']
+            ],
+            [
+                ['黑河1区','黑河2区'],
+                ['哈尔滨1区','哈尔滨2区','哈尔滨3区','哈尔滨4区','哈尔滨5区','哈尔滨6区','哈尔滨7区']
+            ]
+        ];
+        //获取页面元素
+        var province=document.getElementById('province');
+        var city=document.getElementById('city');
+        var district=document.getElementById('district');
+        //创建省
+        for(let i=0;i<dataProvince.length;i++){
+            var opt=document.createElement('option');
+            opt.value=i;
+            opt.innerHTML=dataProvince[i];
+            province.appendChild(opt);
+        }
+        //显示城市
+        province.onchange=changeCity;
+        city.onchange=changeDistrict;
+        
+        //遍历城市
+        function changeCity(){
+            provinceValue=province.value;
+            //将城市节点中的选项仅保留1个
+        city.length=1;
+        district.length=1;
+            if(provinceValue !=''){
+            for(let i=0;i<dataCity[provinceValue].length;i++){
+            var opt=document.createElement('option');
+            opt.value=i;
+            opt.innerHTML=dataCity[provinceValue][i];
+            city.appendChild(opt);
+        }
+       }
+        }
+       function changeDistrict(){
+        //获取选择城市的Value
+        cityValue=city.value;
+        district.length=1;
+        if(cityValue !=''){
+            for(let i=0;i<dataDistrict[provinceValue][cityValue].length;i++){
+                var opt=document.createElement('option');
+                opt.value=i;
+                opt.innerHTML=dataDistrict[provinceValue][cityValue][i];
+                district.appendChild(opt);
+            }
+        }
+       }
+    </script>
+</body>
+</html>

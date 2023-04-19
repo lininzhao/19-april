@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //不得改变 body 部分的前提下，通过 JS 将用户列表数据渲染到页面上。
+        var body=document.querySelector('body');
+        var ul=document.createElement('ul');
+        body.appendChild(ul);
+        var userList=['lihua','zhangsan','libai','wangwu'];
+        for(let i=0;i<userList.length;i++){
+            var li=document.createElement('li');
+            ul.appendChild(li);
+            li.innerHTML=userList[i];
+        }
+       
+        
+
+    </script>
+</body>
+</html>
